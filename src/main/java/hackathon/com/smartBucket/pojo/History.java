@@ -10,11 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class History {
 	@Id
 	private String id;
-	private int userId;
-	private int itemCount;
-	private List<Item> itemList;
-	private float total;
-	private String Phone;
+	private Bill bill;
 	private Date billDate;
 	private String paymentOption;
 	public String getId() {
@@ -22,36 +18,6 @@ public class History {
 	}
 	public void setId(String id) {
 		this.id = id;
-	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-	public int getItemCount() {
-		return itemCount;
-	}
-	public void setItemCount(int itemCount) {
-		this.itemCount = itemCount;
-	}
-	public List<Item> getItemList() {
-		return itemList;
-	}
-	public void setItemList(List<Item> itemList) {
-		this.itemList = itemList;
-	}
-	public float getTotal() {
-		return total;
-	}
-	public void setTotal(float total) {
-		this.total = total;
-	}
-	public String getPhone() {
-		return Phone;
-	}
-	public void setPhone(String phone) {
-		Phone = phone;
 	}
 	public Date getBillDate() {
 		return billDate;
@@ -65,23 +31,24 @@ public class History {
 	public void setPaymentOption(String paymentOption) {
 		this.paymentOption = paymentOption;
 	}
-	public History(String id, int userId, int itemCount, List<Item> itemList, float total, String phone, Date billDate,
-			String paymentOption) {
-		super();
-		this.id = id;
-		this.userId = userId;
-		this.itemCount = itemCount;
-		this.itemList = itemList;
-		this.total = total;
-		Phone = phone;
-		this.billDate = billDate;
-		this.paymentOption = paymentOption;
-	}
 	public History() {
 		super();
 	}
-	
-	
-	
-	
+	public Bill getBill() {
+		return bill;
+	}
+	public void setBill(Bill bill) {
+		this.bill = bill;
+	}
+	@Override
+	public String toString() {
+		return "History [id=" + id + ", bill=" + bill + ", billDate=" + billDate + ", paymentOption=" + paymentOption
+				+ "]";
+	}
+	public History(Bill bill, Date billDate, String paymentOption) {
+		super();
+		this.bill = bill;
+		this.billDate = billDate;
+		this.paymentOption = paymentOption;
+	}
 }

@@ -1,6 +1,9 @@
 package hackathon.com.smartBucket.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -14,6 +17,9 @@ public class BillService {
 
 	@Autowired
 	BillRepo billRepo;
+	@Autowired
+	MongoOperations mongoOperations;
+	
 	ObjectMapper mapper = new ObjectMapper();
 	// mapper.writeValueAsString(object);
 
@@ -30,7 +36,7 @@ public class BillService {
 
 	public String getBillByUserId(String userId) throws JsonProcessingException {
 		String jsonString;
-		Bill it = billRepo.getBillByUserID(userId);
+		Bill it = billRepo.getBillByUserId(userId);
 		if (it == null) {
 			jsonString = "{ \"Error\" : \"No bill in records for userId <" + userId + ">.\" }";
 		} else {
@@ -40,17 +46,13 @@ public class BillService {
 	}
 	
 	public void deleteBillByUserId(String userId) throws JsonProcessingException{
-		billRepo.delete(billRepo.getBillByUserID(userId));
+		billRepo.delete(billRepo.getBillByUserId(userId));
 	}
 	
 	public String getAllUserIds() throws JsonProcessingException {
 		String jsonString;
-		Bill it = billRepo.
-		if (it == null) {
-			jsonString = "{ \"Error\" : \"No bill in records for userId <" + userId + ">.\" }";
-		} else {
-			jsonString = mapper.writeValueAsString(it);
-		}
+		List<Bill> it = billRepo.findAll();
+		jsonString = mapper.writeValueAsString(it);
 		return jsonString;
 	}
 

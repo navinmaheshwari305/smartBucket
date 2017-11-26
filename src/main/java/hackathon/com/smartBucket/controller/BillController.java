@@ -26,13 +26,13 @@ public class BillController {
 		return billService.createBill(bill);
 	}
 
-	@RequestMapping(value = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody String getBillById(@RequestParam String userId) throws JsonProcessingException {
+	@RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody String getBill(@RequestParam String userId) throws JsonProcessingException {
 		return billService.getBillByUserId(userId);
 	}
 	@RequestMapping(value = "/allId", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody String getBillById(@RequestParam String userId) throws JsonProcessingException {
-		return billService.getBillByUserId(userId);
+	public @ResponseBody String getAllBillIds() throws JsonProcessingException {
+		return billService.getAllUserIds();
 	}
 
 }
