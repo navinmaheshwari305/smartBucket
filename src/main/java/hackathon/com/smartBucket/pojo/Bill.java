@@ -12,7 +12,7 @@ public class Bill {
 	private int itemCount;
 	private List<Item> itemList;
 	private float total;
-	private String Phone;
+	private String phone;
 	
 	public String getUserId() {
 		return userId;
@@ -39,10 +39,10 @@ public class Bill {
 		this.total = total;
 	}
 	public String getPhone() {
-		return Phone;
+		return phone;
 	}
 	public void setPhone(String phone) {
-		Phone = phone;
+		this.phone = phone;
 	}
 	public Bill( String userId, int itemCount, List<Item> itemList, float total, String phone) {
 		super();
@@ -50,7 +50,7 @@ public class Bill {
 		this.itemCount = itemCount;
 		this.itemList = itemList;
 		this.total = total;
-		Phone = phone;
+		this.phone = phone;
 	}
 	public Bill() {
 		super();
@@ -58,7 +58,7 @@ public class Bill {
 	@Override
 	public String toString() {
 		return "Bill [userId=" + userId + ", itemCount=" + itemCount + ", itemList=" + itemList
-				+ ", total=" + total + ", Phone=" + Phone + "]";
+				+ ", total=" + total + ", Phone=" + phone + "]";
 	}
 	
 	

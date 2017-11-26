@@ -11,31 +11,33 @@ import hackathon.com.smartBucket.repo.ItemRepo;
 
 @Service
 public class ItemService {
-	
+
 	@Autowired
 	ItemRepo itemRepo;
 	ObjectMapper mapper = new ObjectMapper();
-	//mapper.writeValueAsString(object);
-	
+	// mapper.writeValueAsString(object);
+
 	public String insertItem(Item item) throws JsonProcessingException {
 		String jsonString;
-		Item it = itemRepo.insert(item);
-		if(it == null){
-			jsonString = "{ \"Error\" : \"Error in inserting Record\" }";
-		}else
-		{
-			jsonString = mapper.writeValueAsString(it);
+		if (itemRepo.findByBarcode(item.getBarcode()) == null) {
+			Item it = itemRepo.insert(item);
+			if (it == null) {
+				jsonString = "{ \"Error\" : \"Error in inserting Record\" }";
+			} else {
+				jsonString = mapper.writeValueAsString(it);
+			}
+		} else {
+			jsonString = "{ \"Error\" : \"Item with barcode <" + item.getBarcode() + "> already present\" }";
 		}
 		return jsonString;
 	}
-	
+
 	public String getItemByBarcode(int barcode) throws JsonProcessingException {
 		String jsonString;
 		Item it = itemRepo.findByBarcode(barcode);
-		if(it == null){
-			jsonString = "{ \"Error\" : \"No Item with Barcode<"+barcode+">\" }";
-		}else
-		{
+		if (it == null) {
+			jsonString = "{ \"Error\" : \"No Item with Barcode<" + barcode + ">\" }";
+		} else {
 			jsonString = mapper.writeValueAsString(it);
 		}
 		return jsonString;

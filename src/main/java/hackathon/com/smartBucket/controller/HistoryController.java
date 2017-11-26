@@ -31,12 +31,12 @@ public class HistoryController {
 		History history = new History(bill , new Date(),"Cash");
 		return historyService.entryInHistory(history);
 	}
-	@RequestMapping(value="/all", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/all", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String getAll() throws JsonProcessingException
 	{
 		return historyService.getAll();
 	}
-	@RequestMapping(value="/", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String getById(@RequestParam String id) throws JsonProcessingException
 	{
 		return historyService.getById(id);

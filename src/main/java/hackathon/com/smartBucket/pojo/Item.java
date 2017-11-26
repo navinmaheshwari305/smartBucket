@@ -11,6 +11,7 @@ public class Item {
 	String name;
 	float rate;
 	float weight;
+	int quantity;
 
 	Item(){
 	}
@@ -46,6 +47,16 @@ public class Item {
 	public void setWeight(float weight) {
 		this.weight = weight;
 	}
+	
+	
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 
 	public Item(int barcode, String name, float rate, float weight) {
 		super();
@@ -53,6 +64,7 @@ public class Item {
 		this.name = name;
 		this.rate = rate;
 		this.weight = weight;
+		this.quantity = 0;
 	}
 
 	public Item(int barcode, String name, float rate) {
@@ -60,12 +72,15 @@ public class Item {
 		this.barcode = barcode;
 		this.name = name;
 		this.rate = rate;
+		this.quantity = 0;
 	}
 
 	@Override
 	public String toString() {
 		return "Item [id=" + id + ", barcode=" + barcode + ", name=" + name + ", rate=" + rate + ", weight=" + weight
-				+ "]";
+				+ ", quantity=" + quantity + "]";
 	}
+	
+	
 
 }

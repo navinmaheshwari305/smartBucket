@@ -17,15 +17,23 @@ public class BillService {
 
 	@Autowired
 	BillRepo billRepo;
-	@Autowired
-	MongoOperations mongoOperations;
-	
+
 	ObjectMapper mapper = new ObjectMapper();
 	// mapper.writeValueAsString(object);
 
 	public String createBill(Bill bill) throws JsonProcessingException {
 		String jsonString;
-		Bill it = billRepo.insert(bill);
+		Bill it;
+		if (bill.getUserId() == null) {
+			it = billRepo.insert(bill);
+		} else {
+			it = billRepo.getBillByUserId(bill.getUserId());
+			it.setItemCount(bill.getItemCount());
+			it.setItemList(bill.getItemList());
+			it.setTotal(bill.getTotal());
+			it = billRepo.save(it);
+		}
+
 		if (it == null) {
 			jsonString = "{ \"Error\" : \"Error in Creating/Updating bill.\" }";
 		} else {
@@ -44,11 +52,11 @@ public class BillService {
 		}
 		return jsonString;
 	}
-	
-	public void deleteBillByUserId(String userId) throws JsonProcessingException{
+
+	public void deleteBillByUserId(String userId) throws JsonProcessingException {
 		billRepo.delete(billRepo.getBillByUserId(userId));
 	}
-	
+
 	public String getAllUserIds() throws JsonProcessingException {
 		String jsonString;
 		List<Bill> it = billRepo.findAll();
