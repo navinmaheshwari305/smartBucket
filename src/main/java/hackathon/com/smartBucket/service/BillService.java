@@ -24,9 +24,10 @@ public class BillService {
 	public String createBill(Bill bill) throws JsonProcessingException {
 		String jsonString;
 		Bill it;
-		if (bill.getUserId() == null) {
+		if (bill.getUserId() == null || bill.getUserId().isEmpty()) {
 			it = billRepo.insert(bill);
 		} else {
+			System.out.println("UserId"+bill.getUserId());
 			it = billRepo.getBillByUserId(bill.getUserId());
 			it.setItemCount(bill.getItemCount());
 			it.setItemList(bill.getItemList());

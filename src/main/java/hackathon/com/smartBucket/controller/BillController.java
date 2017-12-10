@@ -2,6 +2,7 @@ package hackathon.com.smartBucket.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +17,7 @@ import hackathon.com.smartBucket.service.BillService;
 
 @RestController
 @RequestMapping(value = "/bill")
+@CrossOrigin
 public class BillController {
 
 	@Autowired

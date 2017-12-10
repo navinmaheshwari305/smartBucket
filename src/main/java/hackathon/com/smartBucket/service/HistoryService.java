@@ -2,6 +2,7 @@ package hackathon.com.smartBucket.service;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,7 @@ public class HistoryService {
 	
 	ObjectMapper mapper = new ObjectMapper();
 	//mapper.writeValueAsString(object);	
+	
 	
 	public String entryInHistory(History history) throws JsonProcessingException {
 		String jsonString;

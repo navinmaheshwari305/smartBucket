@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +20,7 @@ import hackathon.com.smartBucket.service.HistoryService;
 
 @RestController
 @RequestMapping(path="/history")
+@CrossOrigin(origins = "*")
 public class HistoryController {
 
 	@Autowired
@@ -26,14 +28,16 @@ public class HistoryController {
 	
 	
 	@RequestMapping(value="", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody String insertItem(@RequestBody Bill bill) throws JsonProcessingException
+	public @ResponseBody String insertItem(@RequestBody History history) throws JsonProcessingException
 	{
-		History history = new History(bill , new Date(),"Cash");
+		//History history = new History(bill , new Date(),"Cash");
+		System.out.println("History date is:" +history.getBill().getUserId());
 		return historyService.entryInHistory(history);
 	}
 	@RequestMapping(value="/all", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String getAll() throws JsonProcessingException
 	{
+		
 		return historyService.getAll();
 	}
 	@RequestMapping(value="", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
