@@ -28,10 +28,8 @@ public class HistoryController {
 	
 	
 	@RequestMapping(value="", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody String insertItem(@RequestBody History history) throws JsonProcessingException
+	public @ResponseBody String createHistory(@RequestBody History history) throws JsonProcessingException
 	{
-		//History history = new History(bill , new Date(),"Cash");
-		System.out.println("History date is:" +history.getBill().getUserId());
 		return historyService.entryInHistory(history);
 	}
 	@RequestMapping(value="/all", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)

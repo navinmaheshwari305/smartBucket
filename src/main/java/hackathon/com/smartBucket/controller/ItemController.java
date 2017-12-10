@@ -34,4 +34,10 @@ public class ItemController {
 		return itemService.getItemByBarcode(barcode);
 	}
 	
+	@RequestMapping(value="/all", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody String getAllItem() throws JsonProcessingException
+	{
+		return itemService.getAllItem();
+	}
+	
 }
