@@ -13,6 +13,7 @@ public class Bill {
 	private List<Item> itemList;
 	private float total;
 	private String phone;
+	private float totalWeight;
 	
 	public String getUserId() {
 		return userId;
@@ -44,13 +45,14 @@ public class Bill {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public Bill( String userId, int itemCount, List<Item> itemList, float total, String phone) {
+	public Bill( String userId, int itemCount, List<Item> itemList, float total, String phone , float weight) {
 		super();
 		this.userId = userId;
 		this.itemCount = itemCount;
 		this.itemList = itemList;
 		this.total = total;
 		this.phone = phone;
+		this.totalWeight = weight;
 	}
 	public Bill() {
 		super();
@@ -60,6 +62,13 @@ public class Bill {
 		return "Bill [userId=" + userId + ", itemCount=" + itemCount + ", itemList=" + itemList
 				+ ", total=" + total + ", Phone=" + phone + "]";
 	}
+	public float getTotalWeight() {
+		return totalWeight;
+	}
+	public void setTotalWeight(float totalWeight) {
+		this.totalWeight = totalWeight;
+	}
+	
 	
 	
 }	

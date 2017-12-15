@@ -25,11 +25,12 @@ public class ItemController {
 	@RequestMapping(value="", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String insertItem(@RequestBody Item item) throws JsonProcessingException
 	{
+		System.out.println("Name is:"+item.getName());
 		return itemService.insertItem(item);
 	}
 	
 	@RequestMapping(value="", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody String getItemByBarcode(@RequestParam int barcode) throws JsonProcessingException
+	public @ResponseBody String getItemByBarcode(@RequestParam String barcode) throws JsonProcessingException
 	{
 		return itemService.getItemByBarcode(barcode);
 	}
@@ -37,6 +38,7 @@ public class ItemController {
 	@RequestMapping(value="/all", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String getAllItem() throws JsonProcessingException
 	{
+		System.out.println("in request getAllItem");
 		return itemService.getAllItem();
 	}
 	

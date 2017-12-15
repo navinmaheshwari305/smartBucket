@@ -9,5 +9,5 @@ import hackathon.com.smartBucket.pojo.Item;
 
 public interface ItemRepo extends MongoRepository<Item, String> {
 	List<Item> findByName(String name);
-	Item findByBarcode(int barcode);
+	Item findByBarcode(String barcode);
 }

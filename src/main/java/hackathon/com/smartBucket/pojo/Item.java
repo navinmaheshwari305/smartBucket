@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Item {
 	@Id
 	private String id;
-	int barcode;
+	String barcode;
 	String name;
 	float rate;
 	float weight;
@@ -16,11 +16,11 @@ public class Item {
 	Item(){
 	}
 	
-	public int getBarcode() {
+	public String getBarcode() {
 		return barcode;
 	}
 
-	public void setBarcode(int barcode) {
+	public void setBarcode(String barcode) {
 		this.barcode = barcode;
 	}
 
@@ -58,7 +58,7 @@ public class Item {
 		this.quantity = quantity;
 	}
 
-	public Item(int barcode, String name, float rate, float weight) {
+	public Item(String barcode, String name, float rate, float weight) {
 		super();
 		this.barcode = barcode;
 		this.name = name;
@@ -67,7 +67,7 @@ public class Item {
 		this.quantity = 0;
 	}
 
-	public Item(int barcode, String name, float rate) {
+	public Item(String barcode, String name, float rate) {
 		super();
 		this.barcode = barcode;
 		this.name = name;

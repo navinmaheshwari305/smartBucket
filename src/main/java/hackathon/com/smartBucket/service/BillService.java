@@ -25,6 +25,7 @@ public class BillService {
 		String jsonString;
 		Bill it;
 		if (bill.getUserId() == null || bill.getUserId().isEmpty()) {
+			System.out.println("Inserting Bill");
 			it = billRepo.insert(bill);
 		} else {
 			System.out.println("UserId"+bill.getUserId());

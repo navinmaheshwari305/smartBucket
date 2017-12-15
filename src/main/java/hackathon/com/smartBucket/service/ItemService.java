@@ -34,7 +34,7 @@ public class ItemService {
 		return jsonString;
 	}
 
-	public String getItemByBarcode(int barcode) throws JsonProcessingException {
+	public String getItemByBarcode(String barcode) throws JsonProcessingException {
 		String jsonString;
 		Item it = itemRepo.findByBarcode(barcode);
 		if (it == null) {
